@@ -7,7 +7,9 @@ CREATE TABLE workers (
   first_name VARCHAR(50) NOT NULL,
   last_name VARCHAR(50) NOT NULL,
   monthly_payment Integer NOT NULL,
-  PRIMARY KEY (worker_id) 
+  restaurant_id INT NULL,
+  PRIMARY KEY (worker_id),
+  FOREIGN KEY (restaurant_id) REFERENCES restaurants(restaurant_id) ON DELETE CASCADE 
 );
 
 CREATE TABLE floors (
@@ -98,9 +100,9 @@ CREATE TABLE food_number (
   FOREIGN KEY (order_id) REFERENCES restaurant_orders(order_id) ON DELETE CASCADE
 );
 
-INSERT INTO WORKERS (first_name, last_name, monthly_payment, floor_id) Values ("Asghar", "Asgharian", 4500);
-INSERT INTO WORKERS (first_name, last_name, monthly_payment, floor_id) Values ("Mamad", "Mamadian", 1000);
-INSERT INTO WORKERS (first_name, last_name, monthly_payment, floor_id) Values ("Javad", "Javadian", 12000);
+INSERT INTO WORKERS (first_name, last_name, monthly_payment) Values ("Asghar", "Asgharian", 4500);
+INSERT INTO WORKERS (first_name, last_name, monthly_payment) Values ("Mamad", "Mamadian", 1000);
+INSERT INTO WORKERS (first_name, last_name, monthly_payment, restaurant_id) Values ("Javad", "Javadian", 12000, 1);
 
 INSERT INTO floors (floor_number) VALUES (1);
 INSERT INTO floors (floor_number) VALUES (2);
